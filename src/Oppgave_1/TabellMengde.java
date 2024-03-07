@@ -103,29 +103,51 @@ public class TabellMengde<T> implements MengdeADTInterface<T> {
 		MengdeADTInterface<T> union = new TabellMengde<T>();
 		
 		if (set.isEmpty()) {
-			for(T e: mengde) {
-				union.add(e);
+			for(int i = 0; i < antElementer(); i++) {
+				union.add(getElement(i));
 			}
 			return union;
 		}
 		
 		if (isEmpty()) {
 			for(int i = 0; i < set.antElementer(); i++) {
-				
-				union.add();
+				union.add(set.getElement(i));
 			}
 			return union;
 		}
 		
-		
-		
-		return null;
+		for(int i = 0; i < antElementer(); i++) {
+			union.add(getElement(i));
+		}
+		for(int i = 0; i < set.antElementer(); i++) {
+			union.add(set.getElement(i));
+		}
+		return union;
+	}
+	
+	@Override
+	public T getElement(int i) {
+		return mengde[i];
 	}
 
 	@Override
 	public MengdeADTInterface<T> differential(MengdeADTInterface<T> set) {
-		// TODO Auto-generated method stub
-		return null;
+
+		//set1: 2 4 6
+		//set2: 2 4 6 8
+		//set3: 1 3 4
+		
+		if (isEmpty()) {
+			return null;
+		}
+		MengdeADTInterface<T> diff = new TabellMengde<T>();
+		
+		for (int i = 0; i < antElementer(); i++) {
+			if(!set.contains(getElement(i))) {
+				diff.add(getElement(i));
+			}
+		}
+		return diff;
 	}
 
 	@Override
@@ -169,6 +191,12 @@ public class TabellMengde<T> implements MengdeADTInterface<T> {
 
 	public int antElementer() {
 		return numberOfElements;
+	}
+	public int length() {
+		return mengde.length;
+	}
+	public boolean isInitialized() {
+		return initialized;
 	}
 
 	@Override

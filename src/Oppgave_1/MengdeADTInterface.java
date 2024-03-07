@@ -37,7 +37,11 @@ public interface MengdeADTInterface <T> {
 	
 	int antElementer();
 	
+	T getElement(int i);
 	
+	int length();
+
+	boolean isInitialized();
 	
 	
 	
