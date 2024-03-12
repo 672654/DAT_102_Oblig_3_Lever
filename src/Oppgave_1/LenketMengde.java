@@ -14,11 +14,22 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public boolean isEmpty() {
-		return this.startNode == null;
+		return this.startNode.getData() == null;
 	}
 
 	@Override
 	public boolean contains(T element) {
+		if (antall < 1) {
+			return false;
+		}
+		Node<T> temp = startNode;
+		
+		while (temp!=null) {
+			if(temp.getData().equals(element)) {
+				return true;
+			}
+			temp = temp.getNext();
+		}
 		return false;
 	}
 
@@ -68,7 +79,7 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public void add(T newEntry) {
-		if (startNode == null) {
+		if (startNode.getData() == null) {
 			startNode.setData(newEntry);
 			startNode.setNext(null);
 			antall++;
@@ -119,8 +130,7 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public boolean isInitialized() {
-		// TODO Auto-generated method stub
-		return false;
+		return initialized;
 	}
 
 	private static class Node<T> {
