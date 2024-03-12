@@ -20,6 +20,8 @@ public class Main_Util_Set_forTesting {
 		
 		System.out.println(diff.contains(3));
 		
+		Integer[] arr = mengde.toArray();
+		
 
 
 		// 1,2,3

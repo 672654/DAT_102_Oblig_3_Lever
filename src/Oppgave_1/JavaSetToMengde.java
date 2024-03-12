@@ -169,7 +169,6 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 	@Override
 	public T[] toArray() {
 		return null;
-
 	}
 
 }
