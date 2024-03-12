@@ -49,32 +49,85 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public boolean equalsSet(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return false;
+		if (mengde.antElementer() != antElementer()) {
+			return false;
+		}
+		for (int i = 0; i < antall; i++) {
+			if (!mengde.contains(getElement(i))) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
 	public boolean disjointSet(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return false;
+		for (int i = 0; i < antall; i++) {
+			if (mengde.contains(getElement(i))) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
 	public MengdeADTInterface<T> intersection(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return null;
+		if(mengde.isEmpty() || isEmpty()) {
+			return null;
+		}
+		
+		MengdeADTInterface<T> snitt = new TabellMengde<T>();
+		for(int i = 0; i < antall; i++) {
+			if(mengde.contains(getElement(i))) {
+				snitt.add(getElement(i));
+			}
+		}
+		return snitt;
 	}
 
 	@Override
 	public MengdeADTInterface<T> union(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return null;
+		if (mengde.isEmpty() && isEmpty()) {
+			return null;
+		}
+		MengdeADTInterface<T> union = new TabellMengde<T>();
+		
+		if (mengde.isEmpty()) {
+			for(int i = 0; i < antElementer(); i++) {
+				union.add(getElement(i));
+			}
+			return union;
+		}
+		
+		if (isEmpty()) {
+			for(int i = 0; i < mengde.antElementer(); i++) {
+				union.add(mengde.getElement(i));
+			}
+			return union;
+		}
+		
+		for(int i = 0; i < antElementer(); i++) {
+			union.add(getElement(i));
+		}
+		for(int i = 0; i < mengde.antElementer(); i++) {
+			union.add(mengde.getElement(i));
+		}
+		return union;
 	}
 
 	@Override
 	public MengdeADTInterface<T> differential(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty()) {
+			return null;
+		}
+		MengdeADTInterface<T> diff = new TabellMengde<T>();
+		
+		for (int i = 0; i < antElementer(); i++) {
+			if(!mengde.contains(getElement(i))) {
+				diff.add(getElement(i));
+			}
+		}
+		return diff;
 	}
 
 	@Override

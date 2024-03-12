@@ -80,7 +80,7 @@ public class TabellMengde<T> implements MengdeADTInterface<T> {
 	@Override
 	public MengdeADTInterface<T> intersection(MengdeADTInterface<T> set) {
 		
-		if(set.isEmpty()|| isEmpty()) {
+		if(set.isEmpty() || isEmpty()) {
 			return null;
 		}
 		MengdeADTInterface<T> snitt = new TabellMengde<T>();
@@ -88,7 +88,6 @@ public class TabellMengde<T> implements MengdeADTInterface<T> {
 		for(int i = 0; i < numberOfElements; i++) {
 			if(set.contains(mengde[i])) {
 				snitt.add(mengde[i]);
-				
 			}
 		}
 		return snitt;
