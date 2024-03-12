@@ -49,14 +49,25 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public boolean equalsSet(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return false;
+		if (mengde.antElementer() != antElementer()) {
+			return false;
+		}
+		for (int i = 0; i < antall; i++) {
+			if (!mengde.contains(getElement(i))) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
 	public boolean disjointSet(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return false;
+		for (int i = 0; i < antall; i++) {
+			if (mengde.contains(getElement(i))) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
