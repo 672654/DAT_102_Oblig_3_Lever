@@ -2,61 +2,66 @@ package Oppgave_1;
 
 public class LenketMengde<T> implements MengdeADTInterface<T> {
 
-
 	private Node<T> startNode;
 	private Integer antall;
 	private boolean initialized;
-	
-	
-	public LenketMengde () {
-		this.startNode = null;
-		this.antall = null;
+
+	public LenketMengde() {
+		this.startNode = new Node<T>();
+		this.antall = 0;
 		this.initialized = true;
 	}
-	
+
 	@Override
 	public boolean isEmpty() {
 		return this.startNode == null;
 	}
 
 	@Override
-	public boolean contains(Object element) {
+	public boolean contains(T element) {
+		return false;
+	}
+
+	@Override
+	public boolean subSetOf(MengdeADTInterface<T> mengde) {
+		for (int i = 0; i < antall; i++) {
+			Node<T> index = startNode;
+			for (int j = 0; j < mengde.length(); j++) {
+				if (index.getData() == mengde.getElement(j)) {
+					return false;
+				}
+			}
+			index = index.getNext();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean equalsSet(MengdeADTInterface<T> mengde) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean subSetOf(MengdeADTInterface mengde) {
+	public boolean disjointSet(MengdeADTInterface<T> mengde) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean equalsSet(MengdeADTInterface mengde) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean disjointSet(MengdeADTInterface mengde) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public MengdeADTInterface intersection(MengdeADTInterface mengde) {
+	public MengdeADTInterface<T> intersection(MengdeADTInterface<T> mengde) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public MengdeADTInterface union(MengdeADTInterface mengde) {
+	public MengdeADTInterface<T> union(MengdeADTInterface<T> mengde) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public MengdeADTInterface differential(MengdeADTInterface mengde) {
+	public MengdeADTInterface<T> differential(MengdeADTInterface<T> mengde) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -70,41 +75,46 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 			return;
 		}
 		Node<T> midlertidig = startNode;
-		
-		while(midlertidig.getNext()!=null) {
+
+		while (midlertidig.getNext() != null) {
 			midlertidig = midlertidig.getNext();
 		}
 		midlertidig.getNext().setData(newEntry);
 		midlertidig.getNext().setNext(null);
 		antall++;
-		
-		
-		
-		
+
 	}
 
 	@Override
-	public void remove(Object element) {
+	public void remove(T element) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public int antElementer() {
-		// TODO Auto-generated method stub
-		return 0;
+		return antall;
 	}
 
 	@Override
-	public T getElement(int i) {
-		// TODO Auto-generated method stub
+	public T getElement(int index) {
+		if (antall == 0) {
+			return null;
+		}
+		Node<T> plass = startNode;
+		for (int i = 0; i < antall; i++) {
+			if (i == index) {
+				return plass.getData();
+			}
+			plass = plass.getNext();
+		}
 		return null;
 	}
 
 	@Override
 	public int length() {
 		// TODO Auto-generated method stub
-		return 0;
+		return antall;
 	}
 
 	@Override
@@ -112,29 +122,37 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
-private static class Node <T>{
-		
+
+	private static class Node<T> {
+
 		public T data;
 		public Node<T> next;
+
+		public Node() {
+			this.data = null;
+			this.next = null;
+		}
 		
 		public Node(T data) {
 			this.data = data;
 			this.next = null;
 		}
+
 		public void setData(T data) {
 			this.data = data;
 		}
+
 		public T getData() {
 			return this.data;
 		}
+
 		public void setNext(Node<T> nextNode) {
 			this.next = nextNode;
 		}
-		public Node<T> getNext(){
+
+		public Node<T> getNext() {
 			return next;
 		}
 	}
-	
+
 }
