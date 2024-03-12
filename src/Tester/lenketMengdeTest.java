@@ -99,6 +99,9 @@ class lenketMengdeTest {
 		assertFalse(set1.contains(3));
 		assertTrue(set1.contains(2));
 		assertTrue(set1.contains(4));
+		set1.remove(1);
+		assertFalse(set1.contains(1));
+		assertTrue(set1.contains(2));
 //		fail("Not yet implemented");
 	}
 
