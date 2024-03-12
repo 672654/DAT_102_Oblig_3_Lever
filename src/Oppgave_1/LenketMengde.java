@@ -142,12 +142,12 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 		if (!contains(element) || isEmpty()) {
 			return;
 		}
-		Node<T> temp = startNode;
-		if (temp.getData() == element) {
+		if (startNode.getData() == element) {
 			startNode = startNode.getNext();
 			antall--;
 			return;
 		}
+		Node<T> temp = startNode;
 		temp = temp.getNext();
 		Node<T> pre = startNode;
 		while (temp != null) {
