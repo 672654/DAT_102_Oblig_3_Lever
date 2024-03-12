@@ -18,6 +18,8 @@ class lenketMengdeTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		set1 = new LenketMengde<Integer>();
+		set2 = new LenketMengde<Integer>();
+		set3 = new LenketMengde<Integer>();
 	}
 
 	@Test
@@ -34,12 +36,21 @@ class lenketMengdeTest {
 
 	@Test
 	void testContains() {
-		fail("Not yet implemented");
+		assertFalse(set1.contains(1));
+		set1.add(2);
+		set1.add(4);
+		assertEquals(true,set1.contains(2));
+		assertEquals(true,set1.contains(4));
+		
+		
 	}
 
 	@Test
 	void testSubSetOf() {
-		fail("Not yet implemented");
+		set1.add(2);
+		set1.add(4);
+		set2.add(2);
+		assertEquals(true,set2.subSetOf(set1));
 	}
 
 	@Test
@@ -71,6 +82,8 @@ class lenketMengdeTest {
 	void testAdd() {
 		set1.add(2);
 		assertEquals(1,set1.antElementer());
+		set1.add(4);
+		assertEquals(2,set1.antElementer());
 		
 	}
 

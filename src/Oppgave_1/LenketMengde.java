@@ -24,7 +24,7 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 		}
 		Node<T> temp = startNode;
 		
-		while (temp!=null) {
+		while (temp.getData()!=null) {
 			if(temp.getData().equals(element)) {
 				return true;
 			}
@@ -79,21 +79,11 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public void add(T newEntry) {
-		if (startNode.getData() == null) {
-			startNode.setData(newEntry);
-			startNode.setNext(null);
-			antall++;
-			return;
-		}
-		Node<T> midlertidig = startNode;
-
-		while (midlertidig.getNext() != null) {
-			midlertidig = midlertidig.getNext();
-		}
-		midlertidig.getNext().setData(newEntry);
-		midlertidig.getNext().setNext(null);
+		
+		Node <T> newNode = new Node<T>(newEntry);
+		newNode.setNext(startNode);
+		startNode = newNode;
 		antall++;
-
 	}
 
 	@Override
