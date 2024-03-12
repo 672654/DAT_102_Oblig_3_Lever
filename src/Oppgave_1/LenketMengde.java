@@ -184,6 +184,10 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 	public boolean isInitialized() {
 		return initialized;
 	}
+	
+	public T[] toArray() {
+		return null;
+	}
 
 	private static class Node<T> {
 

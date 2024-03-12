@@ -43,6 +43,8 @@ public interface MengdeADTInterface <T> {
 
 	boolean isInitialized();
 	
+	T[] toArray();
+	
 	
 	
 	

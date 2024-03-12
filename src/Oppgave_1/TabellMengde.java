@@ -191,11 +191,17 @@ public class TabellMengde<T> implements MengdeADTInterface<T> {
 	public int antElementer() {
 		return numberOfElements;
 	}
+	
 	public int length() {
 		return mengde.length;
 	}
+	
 	public boolean isInitialized() {
 		return initialized;
+	}
+	
+	public T[] toArray() {
+		return null;
 	}
 
 	@Override
