@@ -201,7 +201,7 @@ public class TabellMengde<T> implements MengdeADTInterface<T> {
 	}
 	
 	public T[] toArray() {
-		return null;
+		return mengde;
 	}
 
 	@Override

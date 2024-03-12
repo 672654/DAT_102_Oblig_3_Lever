@@ -186,7 +186,12 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 	}
 	
 	public T[] toArray() {
-		return null;
+		@SuppressWarnings("unchecked")
+		T[] array = (T[]) new Object[antall];
+		for (int i = 0; i < antall; i++) {
+			array[i] = getElement(i);
+		}
+		return array;
 	}
 
 	private static class Node<T> {
