@@ -77,7 +77,7 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 		midlertidig.getNext().setData(newEntry);
 		midlertidig.getNext().setNext(null);
 		antall++;
-		return;
+		
 		
 		
 		
