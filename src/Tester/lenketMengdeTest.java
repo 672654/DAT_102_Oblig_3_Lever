@@ -171,7 +171,6 @@ class lenketMengdeTest {
 		assertTrue(set1.contains(2));
 		set1.remove(5);
 		assertFalse(set1.contains(5));
-//		fail("Not yet implemented");
 	}
 
 	@Test
