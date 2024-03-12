@@ -132,6 +132,15 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 	public void add(T newEntry) {
 		
 		Node <T> newNode = new Node<T>(newEntry);
+		
+		Node<T> findEqualNodeData = startNode;
+		
+		while (findEqualNodeData.getData() !=null) {
+			if (findEqualNodeData.getData().equals(newEntry)) {
+				return;
+			}
+			findEqualNodeData = findEqualNodeData.getNext();
+		}
 		newNode.setNext(startNode);
 		startNode = newNode;
 		antall++;
@@ -165,6 +174,7 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 		if (antall == 0) {
 			return null;
 		}
+		
 		Node<T> plass = startNode;
 		for (int i = 0; i < antall; i++) {
 			if (i == index) {
