@@ -2,7 +2,7 @@ package Oppgave_1;
 
 import java.util.HashSet;
 
-public class Util_Set {
+public class Main_Util_Set_forTesting {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -19,6 +19,8 @@ public class Util_Set {
 		MengdeADTInterface<Integer> diff = mengde.differential(annenMengde);
 		
 		System.out.println(diff.contains(3));
+		
+
 
 		// 1,2,3
 

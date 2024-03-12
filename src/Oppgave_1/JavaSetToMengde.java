@@ -1,6 +1,7 @@
 package Oppgave_1;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
@@ -167,8 +168,8 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public T[] toArray() {
-
 		return null;
+
 	}
 
 }
