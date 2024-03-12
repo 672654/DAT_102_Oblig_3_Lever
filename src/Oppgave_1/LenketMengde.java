@@ -72,8 +72,17 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public MengdeADTInterface<T> intersection(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return null;
+		if(mengde.isEmpty() || isEmpty()) {
+			return null;
+		}
+		
+		MengdeADTInterface<T> snitt = new TabellMengde<T>();
+		for(int i = 0; i < antall; i++) {
+			if(mengde.contains(getElement(i))) {
+				snitt.add(getElement(i));
+			}
+		}
+		return snitt;
 	}
 
 	@Override
