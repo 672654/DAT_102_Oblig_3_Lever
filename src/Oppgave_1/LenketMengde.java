@@ -117,8 +117,17 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public MengdeADTInterface<T> differential(MengdeADTInterface<T> mengde) {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty()) {
+			return null;
+		}
+		MengdeADTInterface<T> diff = new TabellMengde<T>();
+		
+		for (int i = 0; i < antElementer(); i++) {
+			if(!mengde.contains(getElement(i))) {
+				diff.add(getElement(i));
+			}
+		}
+		return diff;
 	}
 
 	@Override
