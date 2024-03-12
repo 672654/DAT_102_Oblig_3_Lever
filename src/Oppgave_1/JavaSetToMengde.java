@@ -26,7 +26,7 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 
 	}
 
-	public HashSet<T> castToSet(MengdeADTInterface<T> annenmengde) {
+	private HashSet<T> castToSet(MengdeADTInterface<T> annenmengde) {
 
 		Set<T> annenMengde = ((JavaSetToMengde<T>) annenmengde).mengde;
 		return (HashSet<T>) annenMengde;
