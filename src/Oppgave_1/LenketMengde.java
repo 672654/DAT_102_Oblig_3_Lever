@@ -35,12 +35,10 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public boolean subSetOf(MengdeADTInterface<T> mengde) {
+		Node<T> index = startNode;
 		for (int i = 0; i < antall; i++) {
-			Node<T> index = startNode;
-			for (int j = 0; j < mengde.length(); j++) {
-				if (index.getData() == mengde.getElement(j)) {
-					return false;
-				}
+			if (!mengde.contains(index.getData())) {
+				return false;
 			}
 			index = index.getNext();
 		}
