@@ -17,10 +17,20 @@ public class Main_Util_Set_forTesting {
 		annenMengde.add(3);
 
 		MengdeADTInterface<Integer> diff = mengde.differential(annenMengde);
+		MengdeADTInterface<Integer> union = mengde.union(annenMengde);
 		
-		System.out.println(diff.contains(3));
 		
-		Integer[] arr = mengde.toArray();
+		System.out.println(union.getElement(0));
+		System.out.println(union.getElement(1));
+		System.out.println(union.getElement(2));
+		
+		System.out.println();
+		
+		Object[] arr = union.toArray();
+		for (Object i: arr) {
+			System.out.println(i);
+			
+		}
 		
 
 

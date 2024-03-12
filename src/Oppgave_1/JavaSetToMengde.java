@@ -97,16 +97,17 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 
 		if (annenmengde instanceof JavaSetToMengde) {
 			Set<T> annenMengde = ((JavaSetToMengde<T>) annenmengde).mengde;
-			@SuppressWarnings("unchecked")
-			T[] array = (T[]) annenMengde.toArray();
+
 			@SuppressWarnings("unchecked")
 			T[] arraythisMengde = (T[]) this.mengde.toArray();
-
-			for (int i = 0; i < array.length; i++) {
-				resultat.add(array[i]);
-			}
+			@SuppressWarnings("unchecked")
+			T[] array = (T[]) annenMengde.toArray();
+			
 			for (int j = 0; j < arraythisMengde.length; j++) {
 				resultat.add(arraythisMengde[j]);
+			}
+			for (int i = 0; i < array.length; i++) {
+				resultat.add(array[i]);
 			}
 		}
 		return resultat;
@@ -152,7 +153,11 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public T getElement(int i) {
-		return null;
+		
+		@SuppressWarnings("unchecked")
+		T[] arraythisMengde = (T[]) this.mengde.toArray();
+		T element = arraythisMengde[i];
+		return element;
 	}
 
 	@Override
@@ -167,7 +172,9 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public T[] toArray() {
-		return null;
+		@SuppressWarnings("unchecked")
+		T[] arraythisMengde = (T[]) this.mengde.toArray();
+		return arraythisMengde;
 	}
 
 }
