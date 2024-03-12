@@ -89,7 +89,16 @@ class lenketMengdeTest {
 
 	@Test
 	void testRemove() {
-		fail("Not yet implemented");
+		set1.add(1);
+		set1.add(2);
+		set1.add(3);
+		set1.add(4);
+		set1.add(5);
+		set1.remove(3);
+		assertEquals(4, set1.antElementer());
+		assertFalse(set1.contains(3));
+		assertTrue(set1.contains(2));
+//		fail("Not yet implemented");
 	}
 
 	@Test

@@ -139,8 +139,20 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-
+		if (!contains(element) || isEmpty()) {
+			return;
+		}
+		Node<T> temp = startNode;
+		Node<T> pre = startNode;
+		while (temp != null) {
+			if (temp.getData() == element) {
+				pre.setNext(temp.getNext());
+				antall--;
+				return;
+			}
+			pre = temp;
+			temp = temp.getNext();
+		}
 	}
 
 	@Override
@@ -165,7 +177,6 @@ public class LenketMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public int length() {
-		// TODO Auto-generated method stub
 		return antall;
 	}
 
