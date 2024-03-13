@@ -16,8 +16,7 @@ public static void main(String[] args) {
 	}
 	
 	static double match(Person a, Person b) {
-		double match = antallFelles(a, b) - (antallKunHosDenEne(a, b) + antallKunHosDenEne(b, a)) / antallTotalt(a, b);
-		return match;
+		return antallFelles(a, b) - (antallKunHosDenEne(a, b) + antallKunHosDenEne(b, a)) / antallTotalt(a, b);
 	}
 	
 	static int antallFelles(Person a, Person b) {
