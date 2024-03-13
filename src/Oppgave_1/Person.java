@@ -12,4 +12,8 @@ public class Person {
 	public String[] getHobbyer() {
 		return hobbyer;
 	}
+	
+	public String toString() {
+		return navn;
+	}
 }

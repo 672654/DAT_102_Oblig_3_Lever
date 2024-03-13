@@ -3,24 +3,36 @@ package Oppgave_1;
 public class HobbyMatchMain {
 	
 public static void main(String[] args) {
-		Person Arne = new Person("Arne", "Guitar", "BIl", "BaT");
-		Person Arne2 = new Person("Arne2", "Guitar", "BIl", "BaT", "bla", "blie");
-		Person Henrik = new Person("Henrik", "Piano", "Bil", "baT");
-		Person David = new Person("David", "Guitar", "Sykkel", "BAT");
+		Person arne = new Person("Arne", "Guitar", "BIl", "BaT", "Synge", "turgaing");
+		Person oliver = new Person("Oliver", "Guitar", "BIl", "BaT", "tag", "slalom", "spill");
+		Person henrik = new Person("Henrik", "Piano", "Bil", "tag", "spill");
+		Person david = new Person("David", "Guitar", "Sykkel", "BAT", "spill");
+		Person[] alle = {arne, oliver, henrik, david};
 		
-		System.out.println(antallFelles(Henrik, Arne));
-		System.out.println(antallKunHosDenEne(Arne2, David));
-		System.out.println(match(Henrik, David));
-		System.out.println(match(Arne, David));
-		System.out.println(match(Arne, Arne2));
+		double best = 0.0;
+		Person bestA = null, bestB = null;
+		for (int i = 0; i < alle.length; i++) {
+			for (int j = i; j < alle.length; j++) {
+				if (alle[i].equals(alle[j])) {
+					// do nothing.
+				} else if (match(alle[i], alle[j]) > best) {
+					best = match(alle[i], alle[j]);
+					bestA = alle[i];
+					bestB = alle[j];
+				}
+			}
+		}
+		System.out.println(best);
+		System.out.println(bestA);
+		System.out.println(bestB);
 	}
 	
 	static double match(Person a, Person b) {
 		return antallFelles(a, b) - (antallKunHosDenEne(a, b) + antallKunHosDenEne(b, a)) / antallTotalt(a, b);
 	}
 	
-	static int antallFelles(Person a, Person b) {
-		int felles = 0;
+	static double antallFelles(Person a, Person b) {
+		double felles = 0.0;
 		if (a.getHobbyer().length == 0 || b.getHobbyer().length == 0) {
 			return felles;
 		}
@@ -40,12 +52,12 @@ public static void main(String[] args) {
 	 * @param b
 	 * @return
 	 */
-	 static int antallKunHosDenEne(Person a, Person b) {
-		int alene = a.getHobbyer().length - antallFelles(a, b);
+	 static double antallKunHosDenEne(Person a, Person b) {
+		double alene = a.getHobbyer().length - antallFelles(a, b);
 		return alene;
 	}
 	
-	static int antallTotalt(Person a, Person b) {
+	static double antallTotalt(Person a, Person b) {
 		return a.getHobbyer().length + b.getHobbyer().length;
 	}
 }
