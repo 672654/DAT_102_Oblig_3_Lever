@@ -32,6 +32,9 @@ public class Main_Util_Set_forTesting {
 			
 		}
 		
+		Integer arr1 = (Integer) arr[0];
+		System.out.println(arr1);
+		
 
 
 		// 1,2,3

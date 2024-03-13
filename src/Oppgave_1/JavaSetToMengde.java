@@ -56,6 +56,9 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 	// Totalt ulike
 	@Override
 	public boolean disjointSet(MengdeADTInterface<T> annenmengde) {
+		if (annenmengde.isEmpty()) {
+			return true;
+		}
 		if (annenmengde instanceof JavaSetToMengde) {
 			Set<T> annenMengde = ((JavaSetToMengde<T>) annenmengde).mengde;
 			@SuppressWarnings("unchecked")
@@ -134,15 +137,17 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 
 	@Override
 	public void add(T newEntry) {
-		mengde.add(newEntry);
+		if(mengde.add(newEntry)) {
 		numberOfElements++;
+		}
 
 	}
 
 	@Override
 	public void remove(T element) {
-		mengde.remove(element);
+		if(mengde.remove(element)) {
 		numberOfElements--;
+		}
 
 	}
 
@@ -156,6 +161,9 @@ public class JavaSetToMengde<T> implements MengdeADTInterface<T> {
 		
 		@SuppressWarnings("unchecked")
 		T[] arraythisMengde = (T[]) this.mengde.toArray();
+		if (i >= arraythisMengde.length) {
+			return null;
+		}
 		T element = arraythisMengde[i];
 		return element;
 	}
