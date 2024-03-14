@@ -11,21 +11,22 @@ public class GenererHashKladd {
 		// tabell med plass til 1_000_000 elementer av integers.
 		ArrayList<Integer> intArr = new ArrayList<Integer>();
 		HashSet<Integer> intHash = new HashSet<Integer>();
-		int tall = 13;
+		
+		int randomTall = 13;
 		for (int i = 0; i < 1_000_000; i++) {
-			intArr.add(tall);
-			intHash.add(tall);
-			tall = (tall + 45713) % 1_000_000;
+			intArr.add(randomTall);
+			intHash.add(randomTall);
+			randomTall = (randomTall + 45713) % 1_000_000;
 		}
 		long start = 0;
+		int find = 0;
+		int iterations = 10_000;
+		int funnet = 0;
+		
 		intArr.sort(null);
 
 		Random random = new Random(1);
-		int find = random.nextInt(100);
-		int iterations = 10_000;
-		int funnet = 0;
 		Object[] array = intArr.toArray();
-
 		int[] rand = new int[iterations];
 		for (int i = 0; i < iterations; i++) {
 			rand[i] = find;
