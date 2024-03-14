@@ -12,8 +12,9 @@ public class GenererHashKladd {
 		ArrayList<Integer> intArr = new ArrayList<Integer>();
 		HashSet<Integer> intHash = new HashSet<Integer>();
 		
-		int randomTall = 13;
-		for (int i = 0; i < 1_000_000; i++) {
+		Random random = new Random();
+		int randomTall = random.nextInt();
+		for (int i = 0; i < 100_000; i++) {
 			intArr.add(randomTall);
 			intHash.add(randomTall);
 			randomTall = (randomTall + 45713) % 1_000_000;
@@ -25,7 +26,6 @@ public class GenererHashKladd {
 		
 		intArr.sort(null);
 
-		Random random = new Random(1);
 		Object[] array = intArr.toArray();
 		int[] rand = new int[iterations];
 		for (int i = 0; i < iterations; i++) {
