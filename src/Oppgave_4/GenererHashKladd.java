@@ -22,7 +22,7 @@ public class GenererHashKladd {
 
 		Random random = new Random(1);
 		int find = random.nextInt(100);
-		int iterations = 100_000;
+		int iterations = 10_000;
 		int funnet = 0;
 		Object[] array = intArr.toArray();
 
